@@ -4,7 +4,6 @@ import {createRouter, createWebHistory,} from "vue-router";
 // routes
 import Home from "../components/Home.vue";
 import PersonalInfo from "../components/PersonalInfo.vue";
-import test from "../components/test.vue";
 import Experience from "../components/Experience.vue";
 import Education from "../components/Education.vue";
 import NotFound from "../components/NotFound.vue";
