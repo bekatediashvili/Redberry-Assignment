@@ -27,7 +27,6 @@ const routes = [
     {path: '/:notFound(.*)', component: NotFound}
 
 
-
 ]
 const router = createRouter({
     history: createWebHistory(),
