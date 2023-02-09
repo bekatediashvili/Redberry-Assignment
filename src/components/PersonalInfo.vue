@@ -1,7 +1,7 @@
 <template>
 
   <div id="rem" class="grid grid-cols-2 gap-2 ">
-    <div id="hey" class="grid grid-start-1">
+    <div id="gridStart" class="grid grid-start-1">
       <Header header-title="პირადი ინფო" current-page="1/3" @clear-local-storage="clearLocalStorage"></Header>
       <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 mb-10">
       <form @submit.prevent="submit">
@@ -120,7 +120,7 @@
     </div>
 
     <div class="relative">
-    <div id="hoy" class="grid grid-end-2">
+    <div id="grindEnd" class="grid grid-end-2">
       <img src="/src/assets/img/SmallCornerLogo.png" alt="SmallLogo" class="w-10 h-10 absolute bottom-48 left-8">
 
       <div class="h-20">
@@ -273,13 +273,13 @@ const submit = () => {
 <style scoped>
 
 
-#hey {
+#gridStart {
   background-color: #f9f9f9;
   padding: 10px;
   padding-bottom: 15rem;
 }
 
-#hoy {
+#grindEnd {
   background-color: white;
 }
 
