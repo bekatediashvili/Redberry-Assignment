@@ -31,9 +31,12 @@ const clearLocalStorage = () => {
 
 }
 
-
-const emits = defineEmits(['clearLocalStorage'])
+//props
 const props = defineProps(['headerTitle', 'currentPage'])
+
+//emits
+const emits = defineEmits(['clearLocalStorage'])
+
 
 
 </script>
