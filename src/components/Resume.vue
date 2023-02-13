@@ -14,7 +14,8 @@
 
       <div class="relative">
         <img src="/src/assets/img/SmallCornerLogo.png" alt="SmallLogo" class="w-10 h-10 absolute bottom-0 ">
-        <p class="flex align-center mb-2 text-lg text-[#F93B1D] font-bold "> {{ store.name }} {{ store.surname }} </p>
+        <p class="flex align-center mb-2 text-lg text-[#F93B1D] font-bold leading-10 text-3xl "> {{ store.name }}
+          {{ store.surname }} </p>
         <div class="absolute top-0 right-20">
           <img :src="store.image" id="selected-image" class="rounded-full   w-44 h-44 " v-if="store.image"/>
         </div>
@@ -29,7 +30,8 @@
           <p>{{ store.email }}</p>
         </div>
         <div class="flex align-center mb2">
-          <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mb-2 mr-2">
+          <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+               class="w-6 h-6 mb-2 mr-2">
             <path fill-rule="evenodd"
                   d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
                   clip-rule="evenodd"/>
@@ -43,25 +45,25 @@
 
         </div>
 
-        <div class="flex flex-col">
+        <div class="flex flex-col" v-for="(item, index) in store.experiences">
           <p class="mb-6 text-lg text-[#F93B1D] flex justify-start">გამოცდილება</p>
-          <p class="flex justify-start">{{ store.experiences[0].position }}</p>
-          <p class="flex justify-start">{{ store.experiences[0].employer }}</p>
+          <p class="flex justify-start">{{ item.position }}</p>
+          <p class="flex justify-start">{{ item.employer }}</p>
 
-          <p class="flex align-center">{{ store.experiences[0].begginningDate }} {{ store.experiences[0].endData }}</p>
+          <p class="flex align-center">{{ item.begginningDate }} {{ item.endData }}</p>
 
-          <p class="flex justify-start"> {{ store.experiences[0].description }}</p>
+          <p class="flex justify-start"> {{ item.description }}</p>
           <hr class="h-px my-8 color-grey border-0 dark:bg-grey mb-10 mt-16">
 
         </div>
-        <div class="flex flex-col mb-16">
+        <div class="flex flex-col mb-16" v-for="(item, index) in store.experiences">
           <p class="mb-6 text-lg text-[#F93B1D] flex justify-start">განათლება</p>
-          <p class="flex justify-start">{{ store.educations[0].education }}</p>
+          <p class="flex justify-start">{{ item.education }}</p>
 
 
-          <p class="flex align-center">{{ store.educations[0].eduDegree }} {{ store.educations[0].eduEndDate }}</p>
+          <p class="flex align-center">{{ item.eduDegree }} {{ item.eduEndDate }}</p>
 
-          <p class="flex justify-start mb-8"> {{ store.educations[0].eduDescription }}</p>
+          <p class="flex justify-start mb-8"> {{ item.eduDescription }}</p>
 
 
         </div>
@@ -70,9 +72,8 @@
     </div>
 
 
-
   </div>
-    <SVG :show-pop-up="showPopUp"></SVG>
+  <SVG :show-pop-up="showPopUp"></SVG>
 
 </template>
 
@@ -86,9 +87,11 @@ const showPopUp = ref(true)
 
 onMounted(() => {
   store.restoreFromLocalStorage()
+
 })
 const updateInputValues = () => {
   store.updateLocalStorage()
+
 }
 const clearLocalStorage = () => {
   localStorage.removeItem('inputValues')
@@ -99,10 +102,11 @@ const clearLocalStorage = () => {
 </script>
 
 <style scoped>
-#svg{
-  color:#898989;
+#svg {
+  color: #898989;
 }
-body{
+
+body {
   background-color: #474747;
 }
 

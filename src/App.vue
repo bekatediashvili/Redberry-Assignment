@@ -3,11 +3,16 @@
 </template>
 
 <script setup>
-import PersonalInfo from "./components/PersonalInfo.vue";
-import Experience from "./components/Experience.vue";
-import Home from "./components/Home.vue";
-import test from "./components/test.vue"
-import Test from "./components/test.vue";
+import {GlobalStore} from "./store/Global.js";
+import axios from "axios";
+
+const store = GlobalStore()
+
+
+axios.get('https://resume.redberryinternship.ge/api/degrees').then(responce => {
+  store.educationOptions = responce.data
+});
+
 
 </script>
 <style scoped>

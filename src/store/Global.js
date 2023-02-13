@@ -7,12 +7,19 @@ const defaultState = {
     email: '',
     phone: '',
     image: '',
-    educations: [{'education': '', 'eduDegree': '', 'eduEndDate': '', 'eduDescription': ''}],
-    experiences: [{'begginningDate': '', 'endData': '', 'position': '', 'employer': '', 'description': ''}],
+    educations: [{'education': '', 'eduDegree': '', 'eduEndDate': '', 'eduDescription': '', 'isFormValid': false}],
+    experiences: [{
+        'begginningDate': '',
+        'endData': '',
+        'position': '',
+        'employer': '',
+        'description': '',
+        'isFormValid': false
+    }],
 
 }
 export const GlobalStore = defineStore('GlobalStore', {
-    state: () => ({...defaultState}),
+    state: () => ({...defaultState, educationOptions: {}}),
     actions: {
         updateLocalStorage() {
             const storedInputValues = JSON.parse(localStorage.getItem("inputValues"));
@@ -52,7 +59,7 @@ export const GlobalStore = defineStore('GlobalStore', {
     },
     getters: {
         getDefaultState() {
-            return defaultState;
+            return {...defaultState};
         },
     }
 

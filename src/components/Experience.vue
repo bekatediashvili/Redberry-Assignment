@@ -9,190 +9,37 @@
       <div class="flex  items-center justify-center  ">
 
         <div class="mx-auto w-full ">
-          <form @submit.prevent="submit">
-            <div>
-              <div class="-mx-3 flex flex-col grow ">
-                <div class="w-full px-3 sm:w-2/2">
-                  <div class="mb-5">
-                    <label
-                        for="fName"
-                        class="mb-3 block text-base font-medium text-[#07074D] flex"
-                    >
-                      თანამდებობა
-                    </label>
-                    <input
-
-                        name="fName"
-                        id="fName"
-                        placeholder="დეველოპერი, დიზაინერი ა.შ"
-                        class="w-full rounded-md  py-3 px-6 text-base border focus:outline-none rounded-md"
-                        :class="{ 'border-red-700': isValidPosition === false && isFocused, 'border-green-700': isValidPosition === true && isFocused, 'border-black': isValidPosition === null || !isFocused }"
-                        @focus="handleFocus"
-                        @blur="handleBlur"
-                        v-model.trim="store.experiences[0].position"/>
-                    <div class="text-stone-700 text-sm flex justify-start mt-1 "> მინიმუმ 2 სიმბოლო</div>
-                  </div>
-                </div>
-                <div class="w-full px-3 sm:w-2/2">
-                  <div class="mb-5">
-                    <label
-                        for="lName"
-                        class="mb-3 block text-base font-medium text-[#07074D] flex"
-                    >
-                      დამსაქმებელი
-                    </label>
-                    <input
-
-                        name="lName"
-                        id="lName"
-                        placeholder="დამსაქმებელი"
-                        class="w-full rounded-md  py-3 px-6 text-base border focus:outline-none rounded-md"
-                        :class="{ 'border-red-700': isValidEmployer === false && isFocused, 'border-green-700': isValidEmployer === true && isFocused, 'border-black': isValidEmployer === null || !isFocused }"
-                        @focus="handleFocus"
-                        @blur="handleBlur"
-                        v-model.trim="store.experiences[0].employer"/>
-                    <div class="text-stone-700 text-sm flex justify-start mt-1 "> მინიმუმ 2 სიმბოლო</div>
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <div class="-mx-3 flex flex-wrap">
-                <div class="w-full px-3 sm:w-1/2">
-                  <div class="mb-5">
-                    <label
-                        for="date"
-                        class="mb-3 block text-base font-medium text-[#07074D] flex"
-                    >
-                      დაწყების რიცხვი
-                    </label>
-                    <input
-                        type="date"
-                        required
-                        name="date"
-                        id="date"
-                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        v-model.trim="store.experiences[0].begginningDate"/>
-                  </div>
-                </div>
-                <div class="w-full px-3 sm:w-1/2">
-                  <div class="mb-5">
-                    <label
-                        for="date"
-                        class="mb-3 block text-base font-medium text-[#07074D] flex"
-                    >
-                      დამთავრების რიცხვი
-                    </label>
-                    <input
-
-                        type="date"
-                        name="date"
-                        id="date"
-                        required
-                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        v-model.trim="store.experiences[0].endData"
-
-
-                    />
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="flex flex-wrap">
-
-                <label for="message" class="block mb-2  font-bold  ">აღწერა</label>
-                <textarea required id="message" rows="4"
-                          class="block p-2.5 w-full text-sm text-gray-900 bg-white-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-white-500"
-                          placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
-                          v-model.trim="store.experiences[0].description"
-                ></textarea>
-
-
-              </div>
-              <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-              <div class="flex flex-wrap  "></div>
-              <button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded flex mb-24">
-                მეტი გამოცდილების დამატება
-              </button>
-            </div>
-
-            <div class="flex justify-between ">
-              <router-link to="/personalinfo"
-                           class="bg-violet hover:bg-violet text-white font-bold py-1 px-4 rounded flex">
-                უკან
-              </router-link>
-              <button type="submit"
-                      class="bg-violet hover:bg-violet text-white font-bold py-1 px-4 rounded flex">
-                შემდეგი
-              </button>
-
-            </div>
-
-
-          </form>
-        </div>
-      </div>
-
-
-    </div>
-    <div class="relative">
-      <div class="grid  grid-end-2">
-        <img src="/src/assets/img/SmallCornerLogo.png" alt="SmallLogo" class="w-10 h-10 absolute bottom-48 left-8">
-        <div class="flex flex-col mt-10 pl-10" id="input">
-
-          <p class="flex align-center mb-2 text-lg text-[#F93B1D] font-bold "> {{ store.name }} {{ store.surname }} </p>
-          <div class="absolute top-8 right-20">
-            <img :src="store.image" id="selected-image" class="rounded-full   w-44 h-44 " v-if="store.image"/>
-          </div>
-          <div class="flex align-center mb-2">
-            <svg id="svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6 mr-2">
-              <path stroke-linecap="round"
-                    d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"/>
-            </svg>
-            <p>{{ store.email }}</p>
+          <div key="index" v-for="(formItems, index) in store.experiences">
+            <experience-form :formItems="formItems"></experience-form>
           </div>
 
-          <div class="flex align-center mb2">
-            <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                 class="w-6 h-6 mb-2 mr-2">
-              <path fill-rule="evenodd"
-                    d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-                    clip-rule="evenodd"/>
-            </svg>
-            <p>{{ store.phone }}</p>
 
-          </div>
-          <div class="flex flex-col">
-            <p class="mb-2 text-lg text-red-500 flex justify-start">ჩემ შესახებ</p>
-            <p class="flex justify-start mb-4 overflow-wrap-break-word">{{ store.about }}</p>
-          </div>
-          <hr class="h-px my-8 color-grey border-0 dark:bg-grey mb-10 mt-16">
+          <div class="flex flex-wrap  "></div>
+          <button @click="addNewExperience"
+                  class="bg-blue hover:bg-blue text-white font-bold py-1 px-2 rounded flex mb-24">
+            მეტი გამოცდილების დამატება
+          </button>
 
 
-
-          <div class="flex flex-col">
-            <p class="mb-6 text-lg text-red-500 flex justify-start">გამოცდილება</p>
-            <p class="flex justify-start">{{ store.experiences[0].position }}</p>
-            <p class="flex justify-start">{{ store.experiences[0].employer }}</p>
-
-            <p class="flex align-center">{{ store.experiences[0].begginningDate }} {{
-                store.experiences[0].endData
-              }}</p>
-
-            <p class="flex justify-start"> {{ store.experiences[0].description }}</p>
+          <div class="flex justify-between ">
+            <router-link to="/personalinfo"
+                         class="bg-violet hover:bg-violet text-white font-bold py-1 px-4 rounded flex">
+              უკან
+            </router-link>
+            <button @click="nextPage"
+                    class="bg-violet hover:bg-violet text-white font-bold py-1 px-4 rounded flex">
+              შემდეგი
+            </button>
 
           </div>
 
 
         </div>
-
-
       </div>
+
+
     </div>
+    <RightSidebar></RightSidebar>
   </div>
 </template>
 
@@ -202,31 +49,14 @@ import {GlobalStore} from "../store/Global.js";
 import {computed, onMounted, ref, watch} from "vue";
 import router from "../router/index.js";
 import axios from "axios";
+import ExperienceForm from "./ExperienceForm.vue";
+import RightSidebar from "./RightSidebar.vue";
 
 const store = GlobalStore()
-
-const isFocused = ref(false);
-
-const handleFocus = () => {
-  isFocused.value = true;
-};
-
-const handleBlur = () => {
-  isFocused.value = false;
-};
-
 
 onMounted(() => {
   store.restoreFromLocalStorage()
 })
-
-const isValidPosition = computed(() => {
-  return store.experiences[0].position?.replace(/\s/g, '').length >= 2;
-})
-const isValidEmployer = computed(() => {
-  return store.experiences[0].employer?.replace(/\s/g, '').length >= 2;
-})
-
 
 watch(() => [store.name, store.surname, store.email, store.phone, store.about, store.experiences, store.image], () => {
   store.updateLocalStorage()
@@ -237,16 +67,25 @@ const clearLocalStorage = () => {
   localStorage.removeItem('inputValues')
   store.reset()
 }
-const isFormValid = computed(() => {
-  return isValidEmployer.value && isValidPosition.value;
-});
 
-const submit = () => {
-  if (isFormValid.value) {
-    router.push({path: '/education'})
+const addNewExperience = () => {
+  const experiencesLength = store.experiences.length
+  if (store.experiences[experiencesLength - 1].isFormValid) {
+    const emptyExperience = store.getDefaultState.experiences[0]
+    store.experiences.push({...emptyExperience})
   }
+}
 
-};
+function nextPage() {
+  let isValid = true;
+  store.experiences.forEach((el) => {
+    if (!el.isFormValid)
+      isValid = false
+  })
+  if (isValid)
+    router.push('/education')
+}
+
 
 </script>
 
@@ -259,16 +98,16 @@ const submit = () => {
 
 }
 
-#rem {
-  padding: 1rem;
-}
+/*#rem {*/
+/*  padding: 1rem;*/
+/*}*/
 
 p {
   text-align: start;
 }
 
 
-#svg{
-  color:#898989;
+#svg {
+  color: #898989;
 }
 </style>

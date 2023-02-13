@@ -1,7 +1,7 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, HelveticaNeue, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+    font-family: HelveticaNeue, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    /*line-height: 1.5;*/
+    /*font-weight: 400;*/
 
     /*color-scheme: light dark;*/
     /*color: rgba(255, 255, 255, 0.87);*/
@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: "HelveticaNeue";
-
+    src: url("assets/fonts/HelveticaNeue.ttc");
 }
 
 label {
@@ -43,11 +43,11 @@ a:hover {
 
 body {
     margin: 0;
-    /*display: flex;*/
+
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    /*background-image: url("../src/assets/img/background_image.png");*/
+
 }
 
 h1 {
@@ -67,9 +67,7 @@ button {
     transition: border-color 0.25s;
 }
 
-/*button:hover {*/
-/*  border-color: #646cff;*/
-/*}*/
+
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
@@ -81,15 +79,20 @@ button:focus-visible {
 
 #app {
     max-width: 1280vmax;
+/*min-width: 1920px ;*/
+/*    min-height: 1080px;*/
     margin: 0 auto;
     /*padding: 2rem;*/
     text-align: center;
+    overflow: hidden;
+
 }
 
 @media (prefers-color-scheme: light) {
     :root {
         /*color: #213547;*/
         background-color: #ffffff;
+
     }
 
     /*a:hover {*/
@@ -98,6 +101,7 @@ button:focus-visible {
     button {
         background-color: #f9f9f9;
     }
+
 }
 
 @tailwind base;

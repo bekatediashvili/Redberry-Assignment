@@ -8,6 +8,9 @@ import Experience from "../components/Experience.vue";
 import Education from "../components/Education.vue";
 import NotFound from "../components/NotFound.vue";
 import Resume from "../components/Resume.vue";
+import Test from "../components/test.vue";
+import Experiences from "../components/Experiences.vue";
+import ExperienceForm from "../components/ExperienceForm.vue";
 
 const routes = [
 
@@ -18,13 +21,13 @@ const routes = [
 
     {path: '/home', component: Home},
     {path: '/personalinfo', component: PersonalInfo},
-    {path: '/experience', component: Experience},
-    {path: '/education', component: Education},
+    {path: '/experience', component: Experience, name: "experience"},
+    {path: '/education', component: Education, name: "education"},
     {
         path: '/resume',
         component: Resume
     },
-    {path: '/:notFound(.*)', component: NotFound}
+    {path: '/:notFound(.*)', component: NotFound},
 
 
 ]
